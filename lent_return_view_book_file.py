@@ -47,8 +47,8 @@ def lent_book(book_list, book_lent_info):
 
     book_lent_info.append(new_item)
     book_list[selected_index - 1]["quantity"] -= 1
-    backup_restore_file.backup_books()
-    backup_restore_file.backup_lent_info()
+    backup_restore_file.backup_books(book_list)
+    backup_restore_file.backup_lent_info(book_lent_info)
 
     print(f"\nThe book ({new_item['title']}) is lent to {borrower_name}!")
     return book_list, book_lent_info
@@ -103,8 +103,8 @@ def return_book(book_list, book_lent_info):
     if not found:
         print("\nThe book is not found in the book list!")
 
-    backup_restore_file.backup_books()
-    backup_restore_file.backup_lent_info()
+    backup_restore_file.backup_books(book_list)
+    backup_restore_file.backup_lent_info(book_lent_info)
 
     print(f"\nThe book ({returned_book['title']}) is returned successfully!")
     return book_list, book_lent_info
